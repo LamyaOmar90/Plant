@@ -1,15 +1,18 @@
+//
+//  PlantImage.swift
+//  Plant
+//
+//  Created by lamya on 05/06/1448 AH.
+//
+
 import SwiftUI
 
 struct PlantImage: View {
     var body: some View {
-        // بدليها بصورة النبتة من فيجما: Image("plant")
-        Image(systemName: "leaf.circle.fill")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 120, height: 120)
-            .foregroundColor(.plantGreen)
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
+
 #Preview {
-    PlantImage().preferredColorScheme(.dark)
+    PlantImage()
 }
