@@ -1,21 +1,32 @@
- #🌱 Planto
+# 🌱 Plant Care
 
-A simple iOS app that keeps all your plants in one place and reminds you when it's time to water them.
+A simple iOS application designed to help
+users take care of their plants and keep
+track of their plant care routine.
 
-App Name & Purpose
+## App Purpose
 
-Planto is a plant watering reminder app built with SwiftUI.
+Plant Care is an iOS application that helps
+users organize and manage their plants.
 
-Many people forget when to water their plants. Planto solves this by letting you save each plant with its room, light, and watering needs, then showing a daily checklist so you can mark each plant as watered. It also sends a notification to remind you.
+It provides an easy way to keep plant
+information, track plant care activities,
+and make plant care more organized.
 
-Main Features 
-Onboarding screen – a welcome screen that appears only the first time the app is opened.
-Add a plant – enter the plant name, room, light, watering days, and amount of water.
-Today's reminders – a list of all plants with a progress bar showing how many have been watered today.
-Mark as watered – tap the circle next to a plant to check it off.
-Edit a plant – tap a plant's name to update its details.
-Delete a plant – swipe left on a plant, or use the Delete Reminder button on the edit screen.
-All Done screen – a friendly screen that appears when every plant has been watered.
-Empty state – a clear message when no reminders have been added yet.
-Notifications – a local notification reminds you to water your plant.
-Dark mode design – the UI follows the provided Figma design.
+
+## Main Features
+
+- **Onboarding:** Introduces users to the app.
+- **Add a Plant:** Allows users to add new plants.
+- **Plant Details:** Displays plant information.
+- **Care Reminders:** Reminds users about plant care.
+- **Plant Tracking:** Helps users track plant care.
+- **Edit Plant:** Allows users to update plant details.
+- **Delete Plant:** Allows users to remove plants.
+
+## Technologies Used
+
+- Swift
+- SwiftUI
+- Xcode
+- GitHub
