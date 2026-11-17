@@ -14,8 +14,8 @@ struct NotificationManager {
         content.body = "Hey! let's water your \(plant.name)"
         content.sound = .default
 
-        // بعد ٥ ثواني عشان تجربينه (غيريه بعدين)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+// بعد خمس ثواني
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
 
         let request = UNNotificationRequest(identifier: plant.id.uuidString,
                                             content: content,

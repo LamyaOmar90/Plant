@@ -2,21 +2,18 @@ import Foundation
 import Combine
 
 final class PlantViewModel: ObservableObject {
-
+//كلمة @Published تعني: "كل ما تتغير هذي القيمة، أخبري كل صفحة تستخدمها"
+    
     // النباتات كلها
     @Published var plants: [Plant] = []
 
-    // هل المستخدم شاف صفحة البداية؟ (تنحفظ في الجوال)
-    @Published var hasSeenOnboarding = false {
-        didSet {
-            UserDefaults.standard.set(hasSeenOnboarding, forKey: "hasSeenOnboarding")
-        }
-    }
+    // هل شاف المستخدم صفحة البداية؟
+    @Published var hasSeenOnboarding = false
 
     // هل صفحة الإضافة / التعديل مفتوحة؟
     @Published var showSheet = false
 
-    // النبتة اللي نعدلها (nil يعني إضافة نبتة جديدة)
+    // النبتة اللي نعدلها (nil يعني إضافة جديدة)
     @Published var selectedPlant: Plant? = nil
 
     // حقول صفحة الإضافة / التعديل
@@ -25,12 +22,6 @@ final class PlantViewModel: ObservableObject {
     @Published var light = "Full sun"
     @Published var days = "Every day"
     @Published var water = "20-50 ml"
-
-    // الخيارات اللي تظهر في القوائم
-    let roomOptions = ["Bedroom", "Living Room", "Kitchen", "Balcony", "Bathroom"]
-    let lightOptions = ["Full sun", "Partial sun", "Low light"]
-    let dayOptions = ["Every day", "Every 2 days", "Every 3 days", "Once a week"]
-    let waterOptions = ["20-50 ml", "50-100 ml", "100-200 ml"]
 
     // عدد النباتات اللي انسقت
     var doneCount: Int {
@@ -45,12 +36,7 @@ final class PlantViewModel: ObservableObject {
 
     // هل كل النباتات انسقت؟
     var allDone: Bool {
-        for plant in plants {
-            if plant.isDone == false {
-                return false
-            }
-        }
-        return true
+        return doneCount == plants.count
     }
 
     // هل نعدل نبتة موجودة؟
@@ -58,15 +44,15 @@ final class PlantViewModel: ObservableObject {
         return selectedPlant != nil
     }
 
-    // أول ما يشتغل الـ ViewModel نقرأ البيانات المحفوظة
+    // أول ما يشتغل نقرأ: هل شاف صفحة البداية قبل؟
     init() {
         hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
-        loadFromPhone()
     }
 
     // نخلص صفحة البداية ونفتح صفحة الإضافة
     func finishOnboarding() {
         hasSeenOnboarding = true
+        UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
         startAdding()
     }
 
@@ -109,7 +95,6 @@ final class PlantViewModel: ObservableObject {
             plants.append(newPlant)
             NotificationManager.schedule(for: newPlant)
         }
-        saveToPhone()
         showSheet = false
     }
 
@@ -129,7 +114,6 @@ final class PlantViewModel: ObservableObject {
                 break
             }
         }
-        saveToPhone()
     }
 
     // نغير حالة النبتة بين انسقت / ما انسقت
@@ -137,23 +121,6 @@ final class PlantViewModel: ObservableObject {
         for i in 0..<plants.count {
             if plants[i].id == plant.id {
                 plants[i].isDone = !plants[i].isDone
-            }
-        }
-        saveToPhone()
-    }
-
-    // نحفظ النباتات في الجوال
-    private func saveToPhone() {
-        if let data = try? JSONEncoder().encode(plants) {
-            UserDefaults.standard.set(data, forKey: "savedPlants")
-        }
-    }
-
-    // نقرأ النباتات من الجوال
-    private func loadFromPhone() {
-        if let data = UserDefaults.standard.data(forKey: "savedPlants") {
-            if let saved = try? JSONDecoder().decode([Plant].self, from: data) {
-                plants = saved
             }
         }
     }

@@ -1,7 +1,8 @@
 import SwiftUI
 
 @main
-struct PlantoApp: App {
+// app start from here
+struct PlantApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -9,3 +10,4 @@ struct PlantoApp: App {
         }
     }
 }
+//Windogroup نافذه التطبيق

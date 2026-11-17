@@ -21,7 +21,7 @@ struct ContentView: View {
                 }
             }
 
-            // زر + يطلع بعد صفحة البداية
+            // زر (+) يطلع بعد صفحة البداية
             if viewModel.hasSeenOnboarding {
                 PlusButton {
                     viewModel.startAdding()

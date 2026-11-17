@@ -2,11 +2,11 @@ import SwiftUI
 
 // سطر الإعدادات (الغرفة، الإضاءة...)
 struct SettingRow: View {
-    var icon: String
-    var title: String
-    var options: [String]
-    @Binding var selection: String   // القيمة الأصلية عند الأب
-
+    var icon: String  //الايقونه اللي تطلع يسار
+    var title: String  //مثل الموقع والشمس
+    var options: [String] //قائمه الخيارات
+    @Binding var selection: String   // القيمة  الأصلية عند الأب
+//الموجوده في الفيو مودل الROOM
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: icon)
@@ -15,12 +15,12 @@ struct SettingRow: View {
 
             // قائمة منسدلة أصلية من Apple
             Menu {
-                Picker(title, selection: $selection) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option).tag(option)
+                ForEach(options, id: \.self) { option in
+                    Button(option) {
+                        selection = option
                     }
                 }
-            } label: {
+            }label: {
                 HStack(spacing: 4) {
                     Text(selection)
                     Image(systemName: "chevron.up.chevron.down")
@@ -35,7 +35,7 @@ struct SettingRow: View {
 }
 
 #Preview {
-    SettingRow(icon: "location", title: "Room", options: PlantOptions.rooms, selection: .constant("Bedroom"))
+    SettingRow(icon: "location", title: "Room", options: ["Bedroom", "Kitchen"], selection: .constant("Bedroom"))
         .padding()
         .preferredColorScheme(.dark)
 }
