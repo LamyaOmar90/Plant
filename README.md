@@ -30,3 +30,7 @@ and make plant care more organized.
 - SwiftUI
 - Xcode
 - GitHub
+
+![Plant Care](planto-banner.png)
+
+# 🌱 Plant Care
