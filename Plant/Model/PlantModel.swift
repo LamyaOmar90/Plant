@@ -1,11 +1,8 @@
 import Foundation
-//مكتبه ابل للاشياء العامه ممثل UUID
 
-
-// شكل النبتة: كل نبتة عندها هذي المعلومات
-//identifiable = uinq id for each one
+// شكل النبتة
 struct Plant: Identifiable {
-    let id = UUID()
+    var id = UUID()
     var name: String
     var room: String
     var light: String
@@ -14,8 +11,7 @@ struct Plant: Identifiable {
     var isDone = false
 }
 
-// الخيارات الثابته اللي تظهر في القوائم
-//enum يستخدم للقراءه فقط مابغا اسوي منه اكستنشن
+// الخيارات اللي تظهر في القوائم
 enum PlantOptions {
     static let rooms = ["Bedroom", "Living Room", "Kitchen", "Balcony", "Bathroom"]
     static let lights = ["Full sun", "Partial sun", "Low light"]
