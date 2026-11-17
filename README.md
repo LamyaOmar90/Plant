@@ -31,6 +31,7 @@ and make plant care more organized.
 - Xcode
 - GitHub
 
+# 🌱 Plant Care
 ![Plant Care](planto-banner.png)
 
-# 🌱 Plant Care
+
